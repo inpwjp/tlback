@@ -9,4 +9,9 @@ class TestTlbk < ActiveSupport::TestCase
     client = get_client
     assert_true(client.present?)
   end
+
+  def test_backup_tl
+    assert_nothing_raised(backup_tl)
+  end
+
 end
