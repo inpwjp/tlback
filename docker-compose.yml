@@ -1,0 +1,13 @@
+postgresql:
+  image: sameersbn/postgresql:9.6-2
+  ports:
+    - "5433:5432"
+  environment:
+    - PG_TRUST_LOCALNET=true
+    - DB_USER=twitter00
+    - DB_PASS=twitter00
+    - DB_NAME=tlbk
+  restart: always
+  volumes: 
+    - /opt/docker/postgresql:/var/lib/postgresql
+
