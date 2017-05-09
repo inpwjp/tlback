@@ -173,6 +173,6 @@ def backup_tl
       set_user_log(line.attrs[:user])
     end
   ensure
-    @connection.finish if @connection.present?
+    @connection.finish if ! @connection.nil?
   end
 end
