@@ -9,7 +9,11 @@ require 'yaml'
 
 
 def load_settings
-  YAML.load_file('settings.yml')
+  begin 
+    YAML.load_file('settings.yml')
+  rescue
+    {}
+  end
 end
 
 def save_settings(settings = Yaml.new)
