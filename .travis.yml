@@ -7,6 +7,6 @@ rvm:
 install:
   - bundle install
   - docker-compose up -d
-script:
   - bundle exec rake set_settings_from_env
+script:
   - bundle exec rake test
