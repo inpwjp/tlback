@@ -18,7 +18,7 @@ def save_settings(settings = Yaml.new)
   end
 end
 
-def set_token_from_env
+def set_settings_from_env
   settings = load_settings
   
   settings["twitter"] ||= {}

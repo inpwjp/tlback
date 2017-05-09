@@ -15,9 +15,9 @@ task :set_token do
   set_token
 end
 
-desc 'set access_token from env'
-task :set_token_from_env do
-  set_token_from_env
+desc 'set settings from env'
+task :set_settings_from_env do
+  set_settings_from_env
 end
 
 desc 'restore schema'
