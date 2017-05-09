@@ -172,9 +172,7 @@ def backup_tl
       set_user(line.attrs[:user])
       set_user_log(line.attrs[:user])
     end
-  rescue => e
-    raise e
   ensure
-    @connection.finish
+    @connection.finish if @connection.present?
   end
 end
