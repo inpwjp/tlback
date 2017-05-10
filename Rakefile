@@ -22,8 +22,30 @@ end
 
 desc 'restore schema'
 task :restore_schema do
-  
+  sql = ""
+  begin
+    File.open('createdb.dump') do |file|
+      file.read.split("\n").each do |labmen|
+        sql += labmen
+      end
+    end
+    # 例外は小さい単位で捕捉する
+  rescue SystemCallError => e
+    puts %Q(class=[#{e.class}] message=[#{e.message}])
+  rescue IOError => e
+    puts %Q(class=[#{e.class}] message=[#{e.message}])
+  end
 
+  settings = load_settings
+  
+  begin
+    @connection = PG::connect(host: settings["postgresql"]["host"], user: settings["postgresql"]["user"],password: settings["postgresql"]["password"], dbname: settings["postgresql"]["dbname"], port: settings["postgresql"]["port"])
+    @connection.exec(sql)
+  rescue => e
+    puts e.message
+  ensure
+    @connection.finish
+  end
 end
 
 desc 'backup_tl'

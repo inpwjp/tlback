@@ -8,5 +8,6 @@ install:
   - bundle install
   - docker-compose up -d
   - bundle exec rake set_settings_from_env
+  - bundle exec rake restore_schema
 script:
   - bundle exec rake test
