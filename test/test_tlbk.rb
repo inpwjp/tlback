@@ -11,7 +11,7 @@ class TestTlbk < ActiveSupport::TestCase
   end
 
   def teardown
-    @test_connection.finish
+    @test_connection.finish if ! @test_conection.nil?
   end
 
   def test_get_client
