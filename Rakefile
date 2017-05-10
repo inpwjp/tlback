@@ -44,7 +44,7 @@ task :restore_schema do
   rescue => e
     puts e.message
   ensure
-    @connection.finish
+    @connection.finish if ! @connection.nil?
   end
 end
 
