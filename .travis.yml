@@ -6,7 +6,6 @@ rvm:
 
 install:
   - bundle install
-    #  - docker-compose up -d
   - psql -c 'create database tlbk;' -U postgres
   - bundle exec rake set_settings_from_env
   - bundle exec rake restore_schema
