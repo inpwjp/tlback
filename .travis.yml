@@ -9,5 +9,7 @@ install:
   - psql -c 'create database tlbk;' -U postgres
   - bundle exec rake set_settings_from_env
   - bundle exec rake restore_schema
+  - psql -c '\d;' -U postgres
+  - psql -c '\d timeline;' -U postgres
 script:
   - bundle exec rake test
