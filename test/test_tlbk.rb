@@ -13,15 +13,16 @@ class TestTlbk < ActiveSupport::TestCase
 
   def test_backup_tl
     begin
-      settings = load_settings
-      @test_connection = PG::connect(host: settings["postgresql"]["host"], user: settings["postgresql"]["user"],password: settings["postgresql"]["password"], dbname: settings["postgresql"]["dbname"], port: settings["postgresql"]["port"])
-      old_count = @test_connection.exec("SELECT count(*) FROM TIMELINE")
+      pg_exec_block do 
+        old_count = @test_connection.exec("SELECT count(*) FROM TIMELINE")
+      end
       assert_nothing_raised{ backup_tl }
-      new_count = @test_connection.exec("SELECT count(*) FROM TIMELINE")
+      pg_exec_block do 
+        new_count = @test_connection.exec("SELECT count(*) FROM TIMELINE")
+      end
       assert_block{ old_count[0]["count"] < new_count[0]["count"] }
     ensure
       @test_connection.finish if ! @test_conection.nil?
     end
   end
-
 end

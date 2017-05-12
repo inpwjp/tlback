@@ -160,19 +160,34 @@ def set_timeline_log(timeline = {})
   end
 end
 
+def pg_connect_option
+  settings = load_settings
+  options = [:host,:user,:password,:dbname,:port]
+  pg_connect_option = {}
+  options.each do |key|
+    pg_connect_option[key] = settings["postgresql"][key.to_s] if settings["postgresql"][key.to_s]
+  end
+end
+
+def pg_exec_block
+  begin
+    @connection = PG::connect(pg_connect_option)
+    yield
+  ensure
+    @connection.finish if ! @connection.nil?
+  end
+end
+
 def backup_tl
   settings = load_settings
   @client = get_client
 
-  begin
-    @connection = PG::connect(host: settings["postgresql"]["host"], user: settings["postgresql"]["user"],password: settings["postgresql"]["password"], dbname: settings["postgresql"]["dbname"], port: settings["postgresql"]["port"])
+  pg_exec_block do
     @client.home_timeline(:count => "200").each do |line|
       set_timeline_data(line)
       set_timeline_log(line)
       set_user(line.attrs[:user])
       set_user_log(line.attrs[:user])
     end
-  ensure
-    @connection.finish if ! @connection.nil?
   end
 end
