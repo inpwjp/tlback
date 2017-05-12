@@ -165,8 +165,9 @@ def pg_connect_option
   options = [:host,:user,:password,:dbname,:port]
   pg_connect_option = {}
   options.each do |key|
-    pg_connect_option[key] = settings["postgresql"][key.to_s] if ! settings["postgresql"][key.to_s].nil?
+    pg_connect_option[key] = settings["postgresql"][key.to_s] if settings["postgresql"][key.to_s].present?
   end
+  pg_connect_option
 end
 
 def pg_exec_block
