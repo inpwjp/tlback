@@ -1,5 +1,6 @@
 require 'rake/testtask'
 require './tlback.rb'
+require 'active_support'
 
 desc 'Run test_unit based test'
 Rake::TestTask.new do |t|
@@ -38,13 +39,8 @@ task :restore_schema do
 
   settings = load_settings
   
-  begin
-    @connection = PG::connect(host: settings["postgresql"]["host"], user: settings["postgresql"]["user"],password: settings["postgresql"]["password"], dbname: settings["postgresql"]["dbname"], port: settings["postgresql"]["port"])
+  pg_exec_block do
     @connection.exec(sql)
-  rescue => e
-    puts e.message
-  ensure
-    @connection.finish if ! @connection.nil?
   end
 end
 

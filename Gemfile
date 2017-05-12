@@ -7,9 +7,9 @@ gem 'twitter'
 
 gem 'pg'
 gem 'rake'
+gem 'activesupport'
 
 group :development, :test do 
   gem 'test-unit'
   gem 'test-unit-activesupport'
-  gem 'activesupport'
 end
