@@ -10,5 +10,6 @@ install:
 script:
   - bundle exec rake set_settings_from_env
   - bundle exec rake restore_schema
+  - psql -U postgres tlbk < createdb.dump
   - pg_dump -U postgres tlbk
   - bundle exec rake test
