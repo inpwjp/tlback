@@ -7,8 +7,8 @@ rvm:
 install:
   - bundle install
   - psql -c 'create database tlbk;' -U postgres
+script:
   - bundle exec rake set_settings_from_env
   - bundle exec rake restore_schema
-script:
   - pg_dump -U postgres tlbk
   - bundle exec rake test
