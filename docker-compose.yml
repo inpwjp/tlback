@@ -8,6 +8,3 @@ postgresql:
     - DB_PASS=twitter00
     - DB_NAME=tlbk
   restart: always
-  volumes: 
-    - /opt/docker/postgresql:/var/lib/postgresql
-
