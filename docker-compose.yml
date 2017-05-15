@@ -8,5 +8,3 @@ postgresql:
     - DB_USER=postgres
     - DB_PASS=twitter00
     - DB_NAME=tlbk
-  volumes: 
-    - ~/postgresql:/var/lib/postgresql
