@@ -3,8 +3,8 @@ postgresql:
   ports:
     - "5433:5432"
   environment:
-    - DB_PASSWORD=twitter00
-    - DB_USER=postgres
-    - DB_PASS=twitter00
-    - DB_NAME=tlbk
+    - DB_PASSWORD: twitter00
+    - DB_USER: postgres
+    - DB_PASS: twitter00
+    - DB_NAME: tlbk
   restart: always
