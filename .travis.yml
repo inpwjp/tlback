@@ -9,8 +9,9 @@ install:
 script:
   - docker-compose down
   - docker-compose up -d 
+  - docker-compose run sudo su postgres -c 'createdb tlbk'
   - bundle exec rake set_settings_from_env
   - bundle exec rake set_pgpass
-  - bundle exec psql -U postgres -p 5433 < createdb.dump
-  - pg_dumpall -U postgres -p 5433
+  - bundle exec psql -U postgres -p 5433 tlbk < createdb.dump
+  - pg_dump -U postgres -p 5433 tlbk
   - bundle exec rake test
