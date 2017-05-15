@@ -12,5 +12,5 @@ script:
   - bundle exec rake set_settings_from_env
   - bundle exec rake set_pgpass
   - bundle exec rake restore_schema
-  - pg_dump -U postgresql tlbk
+  - pg_dump -U postgres tlbk
   - bundle exec rake test
