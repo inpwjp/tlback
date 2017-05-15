@@ -8,3 +8,5 @@ postgresql:
     - DB_USER=postgres
     - DB_PASS=twitter00
     - DB_NAME=tlbk
+  volumes:
+    - ~/psql_test:/srv/lib/postgresql
