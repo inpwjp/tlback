@@ -49,3 +49,17 @@ desc 'backup_tl'
 task :backup_tl do 
   backup_tl
 end
+
+desc 'set pgpass file'
+task :set_pgpass do 
+  settings = load_settings
+  pgpass_file = [ENV["HOME"], "/", ".pgpass"].join
+  File.open( pgpass_file, 'w') do |f|
+    f.puts([settings["postgresql"]["host"], 
+            settings["postgresql"]["port"],
+            settings["postgresql"]["dbname"],
+            settings["postgresql"]["user"],
+            settings["postgresql"]["password"] ].join(":"))
+  end
+  File.chmod(0600, pgpass_file)
+end

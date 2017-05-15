@@ -10,6 +10,7 @@ script:
   - docker-compose down
   - docker-compose up -d 
   - bundle exec rake set_settings_from_env
+  - bundle exec rake set_pgpass
   - bundle exec rake restore_schema
-  - netstat -nl
+  - pg_dump -U postgresql tlbk
   - bundle exec rake test
