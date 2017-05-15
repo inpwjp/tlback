@@ -8,10 +8,9 @@ install:
   - bundle install
 script:
   - docker-compose down
-  - docker-compose build
   - docker-compose up -d 
   - bundle exec rake set_settings_from_env
   - bundle exec rake set_pgpass
-  - bundle exec rake restore_schema
+  - bundle exec psql -U postgres < createdb.dump
   - pg_dumpall -U postgres 
   - bundle exec rake test
