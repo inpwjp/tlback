@@ -1,6 +1,5 @@
 language: ruby
 services:
-  - postgresql
   - docker
 rvm: 
   - 2.2.2
@@ -9,7 +8,7 @@ install:
   - bundle install
 script:
   - docker-compose up -d 
-  - psql -h 127.0.0.1 -U twitter00 tlbk -c '\\du'
+  - psql -p 5433 -h 127.0.0.1 -U twitter00 tlbk -c '\\du'
   - bundle exec rake set_settings_from_env
   - bundle exec rake restore_schema
   - netstat -nl
