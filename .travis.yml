@@ -11,6 +11,6 @@ script:
   - docker-compose up -d 
   - bundle exec rake set_settings_from_env
   - bundle exec rake set_pgpass
-  - bundle exec psql -U postgres < createdb.dump
-  - pg_dumpall -U postgres 
+  - bundle exec psql -U postgres -p 5433 < createdb.dump
+  - pg_dumpall -U postgres -p 5433
   - bundle exec rake test
