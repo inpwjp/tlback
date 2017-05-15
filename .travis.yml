@@ -9,6 +9,7 @@ install:
   - bundle install
 script:
   - docker-compose up -d 
+  - psql -h localhost -U twitter00 tlbk -c '\\du'
   - bundle exec rake set_settings_from_env
   - bundle exec rake restore_schema
   - netstat -nl
