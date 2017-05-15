@@ -4,7 +4,6 @@ postgresql:
     - "5433:5432"
   environment:
     - PG_TRUST_LOCALNET=true
-    - DB_USER=twitter00
     - DB_PASSWORD=twitter00
     - DB_NAME=tlbk
   restart: always
