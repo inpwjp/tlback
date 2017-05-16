@@ -3,6 +3,6 @@ postgresql:
   ports:
     - "5433:5432"
   environment:
-    - POSTGRESQL_USER=postgres
+    - POSTGRESQL_USER=twitter00
     - POSTGRESQL_PASS=twitter00
     - POSTGRESQL_DB=tlbk
