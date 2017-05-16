@@ -6,7 +6,6 @@ rvm:
 
 install:
   - bundle install
-script:
   - sudo /etc/init.d/postgresql stop
   - sudo apt-get -y remove --purge postgresql-9.1
   - sudo apt-get -y remove --purge postgresql-9.2
@@ -20,12 +19,13 @@ script:
   - sudo sh -c 'echo "local all postgres trust" > /etc/postgresql/9.5/main/pg_hba.conf'
   - sudo sh -c 'echo -n "host all all 127.0.0.1/32 trust" >> /etc/postgresql/9.5/main/pg_hba.conf'
   - sudo /etc/init.d/postgresql restart
-  - sudo -u postgres createdb tlbk
+  - sudo -u postgres createuser -s twitter00
+  - sudo -u postgres createdb -O twiter00 tlbk 
   - psql --version
     # - docker-compose up -d 
   - bundle exec rake set_settings_from_env
-    # - bundle exec rake set_pgpass
     # - bundle exec rake restore_schema
+  - bundle exec rake set_pgpass
   - psql -h 127.0.0.1 -p 5432 -U postgres tlbk < createdb.dump
-  - pg_dump -h 127.0.0.1 -p 5432 -U postgres tlbk
+script:
   - bundle exec rake test

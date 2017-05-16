@@ -173,6 +173,7 @@ end
 def pg_exec_block
   begin
     @connection = PG::connect(pg_connect_option)
+    p @connection
     yield
   rescue => e
     puts e.message
