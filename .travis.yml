@@ -7,11 +7,9 @@ rvm:
 install:
   - bundle install
 script:
-  - mkdir ~/psql_test
   - docker-compose down
   - docker-compose up -d 
   - bundle exec rake set_settings_from_env
+  - bundle exec rake restore_schema
   - bundle exec rake set_pgpass
-  - psql -h 127.0.0.1 -U postgres -p 5433 < createdb.dump
-  - pg_dump -U postgres -p 5433 tlbk
   - bundle exec rake test
