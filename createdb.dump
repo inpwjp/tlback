@@ -50,7 +50,6 @@ CREATE TABLE timeline (
 );
 
 
-ALTER TABLE timeline OWNER TO twitter;
 
 --
 -- Name: tweet_logs; Type: TABLE; Schema: public; Owner: twitter
@@ -65,7 +64,6 @@ CREATE TABLE tweet_logs (
 );
 
 
-ALTER TABLE tweet_logs OWNER TO twitter;
 
 --
 -- Name: tweet_logs_id_seq; Type: SEQUENCE; Schema: public; Owner: twitter
@@ -79,7 +77,6 @@ CREATE SEQUENCE tweet_logs_id_seq
     CACHE 1;
 
 
-ALTER TABLE tweet_logs_id_seq OWNER TO twitter;
 
 --
 -- Name: tweet_logs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: twitter
@@ -109,7 +106,6 @@ CREATE TABLE user_logs (
 );
 
 
-ALTER TABLE user_logs OWNER TO twitter;
 
 --
 -- Name: user_logs_id_seq; Type: SEQUENCE; Schema: public; Owner: twitter
@@ -123,7 +119,6 @@ CREATE SEQUENCE user_logs_id_seq
     CACHE 1;
 
 
-ALTER TABLE user_logs_id_seq OWNER TO twitter;
 
 --
 -- Name: user_logs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: twitter
@@ -149,7 +144,6 @@ CREATE TABLE users (
 );
 
 
-ALTER TABLE users OWNER TO twitter;
 
 --
 -- Name: id; Type: DEFAULT; Schema: public; Owner: twitter
