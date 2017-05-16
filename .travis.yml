@@ -22,9 +22,9 @@ script:
   - sudo /etc/init.d/postgresql restart
   - sudo -u postgres createdb tlbk
   - psql --version
-  - docker-compose up -d 
+    # - docker-compose up -d 
   - bundle exec rake set_settings_from_env
-  - bundle exec rake set_pgpass
+    # - bundle exec rake set_pgpass
     # - bundle exec rake restore_schema
   - psql -h 127.0.0.1 -p 5432 -U postgres tlbk < createdb.dump
   - pg_dump -h 127.0.0.1 -p 5432 -U postgres tlbk
