@@ -26,6 +26,6 @@ script:
   - bundle exec rake set_settings_from_env
   - bundle exec rake set_pgpass
     # - bundle exec rake restore_schema
-  - psql -h 127.0.0.1 -p 5433 -U twitter00 tlbk < createdb.dump
-  - pg_dump -h 127.0.0.1 -p 5433 -U twitter00 tlbk
+  - psql -h 127.0.0.1 -p 5432 -U postgres tlbk < createdb.dump
+  - pg_dump -h 127.0.0.1 -p 5432 -U postgres tlbk
   - bundle exec rake test
