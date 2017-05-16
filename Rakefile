@@ -37,7 +37,6 @@ task :restore_schema do
     puts %Q(class=[#{e.class}] message=[#{e.message}])
   end
 
-  p sql
   settings = load_settings
   
   pg_exec_block do
