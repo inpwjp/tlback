@@ -23,6 +23,7 @@ install:
   - psql --version
     # - docker-compose up -d 
   - bundle exec rake set_settings_from_env
+  - cat settings.yml
     # - bundle exec rake restore_schema
   - bundle exec rake set_pgpass
   - psql -h 127.0.0.1 -p 5432 -U postgres tlbk < createdb.dump
