@@ -17,7 +17,7 @@ install:
   - sudo apt-get update
   - sudo apt-get -y install postgresql-9.5
   - sudo sh -c 'echo "local all postgres trust" > /etc/postgresql/9.5/main/pg_hba.conf'
-  - sudo sh -c 'echo "127.0.0.1/32 all all trust" > /etc/postgresql/9.5/main/pg_hba.conf'
+  - sudo sh -c 'echo "host all all 127.0.0.1/32 trust" > /etc/postgresql/9.5/main/pg_hba.conf'
   - sudo /etc/init.d/postgresql restart
   - sudo -u postgres createuser twitter00 -s
   - sudo -u postgres createdb -O twitter00 tlbk 
