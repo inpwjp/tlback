@@ -173,11 +173,11 @@ end
 def pg_exec_block
   begin
     @connection = PG::connect(pg_connect_option)
-    # p @connection.host
-    # p @connection.user
-    # p @connection.port
-    # p @connection.pass
-    # p @connection.db
+    p @connection.host
+    p @connection.user
+    p @connection.port
+    p @connection.pass
+    p @connection.db
     yield
   rescue => e
     puts e.message
