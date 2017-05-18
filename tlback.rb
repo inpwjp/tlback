@@ -162,23 +162,17 @@ end
 
 def pg_connect_option
   settings = load_settings
-  options = [:host,:user,:dbname,:port]
+  options = [:host,:user,:password ,:dbname,:port]
   pg_connect_option = {}
   options.each do |key|
     pg_connect_option[key] = settings["postgresql"][key.to_s] if settings["postgresql"][key.to_s] != ""
   end
-  p pg_connect_option
   pg_connect_option
 end
 
 def pg_exec_block
   begin
     @connection = PG::connect(pg_connect_option)
-    # p @connection.host
-    # p @connection.user
-    # p @connection.port
-    # p @connection.pass
-    # p @connection.db
     yield
   rescue => e
     puts e.message
