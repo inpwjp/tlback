@@ -29,6 +29,5 @@ install:
     # - bundle exec rake restore_schema
   - bundle exec rake set_pgpass
   - psql -h 127.0.0.1 -p 5432 -U twitter00 tlbk < createdb.dump
-  - psql -h 127.0.0.1 -p 5432 -U twitter00 tlbk -c "ALTER USER \"twitter00\" WITH PASSWORD 'twitter00';"
 script:
   - bundle exec rake test
