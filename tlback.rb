@@ -168,7 +168,6 @@ def pg_connect_option
     pg_connect_option[key] = settings["postgresql"][key.to_s] if settings["postgresql"][key.to_s] != ""
   end
   p pg_connect_option
-  # test
   pg_connect_option
 end
 
