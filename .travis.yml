@@ -18,7 +18,7 @@ install:
   - sudo apt-get -y install postgresql-9.5
   - sudo sh -c 'echo "local all postgres trust" > /etc/postgresql/9.5/main/pg_hba.conf'
   - sudo /etc/init.d/postgresql restart
-  - sudo -u postgres createuser -s twitter00
+  - sudo -u postgres createuser twitter00 -s
   - sudo -u twitter00 createdb -O twitter00 tlbk 
   - psql --version
     # - docker-compose up -d 
