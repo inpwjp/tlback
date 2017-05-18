@@ -20,6 +20,7 @@ install:
   - sudo sh -c 'echo "host all all 127.0.0.1/32 trust" > /etc/postgresql/9.5/main/pg_hba.conf'
   - sudo /etc/init.d/postgresql restart
   - sudo -u postgres createuser twitter00 -s
+  - psql -h 127.0.0.1 -p 5432 -U postgres -c "CREATE USER \"twitter00\" WITH PASSWORD 'twitter00' SUPERUSER;"
   - sudo -u postgres createdb -O twitter00 tlbk 
   - psql --version
     # - docker-compose up -d 
