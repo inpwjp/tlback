@@ -29,5 +29,6 @@ install:
     # - bundle exec rake restore_schema
   - bundle exec rake set_pgpass
   - psql -h 127.0.0.1 -p 5432 -U twitter00 tlbk < createdb.dump
+  - pgdump -h 127.0.0.1 -p 5432 -U twitter00 tlbk
 script:
   - bundle exec rake test

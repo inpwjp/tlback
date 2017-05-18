@@ -162,7 +162,7 @@ end
 
 def pg_connect_option
   settings = load_settings
-  options = [:host,:user,:password,:dbname,:port]
+  options = [:host,:user,:dbname,:port]
   pg_connect_option = {}
   options.each do |key|
     pg_connect_option[key] = settings["postgresql"][key.to_s] if settings["postgresql"][key.to_s] != ""
