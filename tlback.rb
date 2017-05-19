@@ -76,6 +76,7 @@ def get_client
     config.access_token = settings["twitter"]["token"]
     config.access_token_secret = settings["twitter"]["secret"]
   end
+  p client
   return client
 end
 
