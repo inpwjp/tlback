@@ -30,7 +30,7 @@ def set_settings_from_env
   settings["twitter"]["consumer_key"] = ENV["TWITTER_CONSUMER_KEY"] if ENV["TWITTER_CONSUMER_KEY"]
   settings["twitter"]["consumer_secret"] = ENV["TWITTER_CONSUMER_SECRET"] if ENV["TWITTER_CONSUMER_SECRET"]
   settings["twitter"]["token"] = ENV["TWITTER_TOKEN"] if ENV["TWITTER_TOKEN"]
-  settings["twitter"]["secret"] = ENV["TWITTER_TOKEN"] if ENV["TWITTER_TOKEN"]
+  settings["twitter"]["secret"] = ENV["TWITTER_SECRET"] if ENV["TWITTER_SECRET"]
   settings["postgresql"]["user"] = ENV["PSQL_USER"] if ENV["PSQL_USER"]
   settings["postgresql"]["host"] = ENV["PSQL_HOST"] if ENV["PSQL_HOST"]
   settings["postgresql"]["password"] = ENV["PSQL_PASSWORD"] if ENV["PSQL_PASSWORD"]
