@@ -36,6 +36,7 @@ def set_settings_from_env
   settings["postgresql"]["password"] = ENV["PSQL_PASSWORD"] if ENV["PSQL_PASSWORD"]
   settings["postgresql"]["dbname"] = ENV["PSQL_DBNAME"] if ENV["PSQL_DBNAME"]
   settings["postgresql"]["port"] = ENV["PSQL_PORT"] if ENV["PSQL_PORT"]
+  settings["postgresql"]["connect_timeout"] = 600000
 
   save_settings(settings)
 end
@@ -162,7 +163,7 @@ end
 
 def pg_connect_option
   settings = load_settings
-  options = [:host,:user,:password ,:dbname,:port]
+  options = [:host,:user,:password ,:dbname,:port, :connect_timeout]
   pg_connect_option = {}
   options.each do |key|
     pg_connect_option[key] = settings["postgresql"][key.to_s] if settings["postgresql"][key.to_s] != ""
@@ -194,3 +195,11 @@ def backup_tl
     end
   end
 end
+
+def load_all_tweet(name = "")
+  settings = load_settings
+  @client = get_client
+
+  
+end
+

@@ -46,7 +46,11 @@ end
 
 desc 'backup_tl'
 task :backup_tl do 
-  backup_tl
+  begin
+    backup_tl
+  rescue => e
+    puts %Q(class=[#{e.class}] message=[#{e.message}])
+  end
 end
 
 desc 'set pgpass file'
